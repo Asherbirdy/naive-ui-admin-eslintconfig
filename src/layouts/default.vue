@@ -1,10 +1,17 @@
 <script setup lang="ts">
-console.log()
+import { NLayout } from 'naive-ui'
+
 </script>
 
 <template>
   <div>
-    <Header/>
-    <RouterView class="mx-5%" />
+    <!-- Header -->
+    <n-layout>
+      <LayoutsHeader />
+    </n-layout>
+    <n-layout has-sider>
+      <LayoutSidebar />
+      <RouterView />
+    </n-layout>
   </div>
 </template>
