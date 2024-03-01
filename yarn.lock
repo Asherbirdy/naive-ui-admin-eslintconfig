@@ -2578,7 +2578,7 @@ muggle-string@^0.3.1:
   resolved "https://registry.yarnpkg.com/muggle-string/-/muggle-string-0.3.1.tgz#e524312eb1728c63dd0b2ac49e3282e6ed85963a"
   integrity sha512-ckmWDJjphvd/FvZawgygcUeQCxzvohjFO5RxTjj4eq8kw359gFF3E1brjfI+viLMxss5JrHTDRHZvu2/tuy0Qg==
 
-naive-ui@^2.36.0:
+naive-ui@^2.38.1:
   version "2.38.1"
   resolved "https://registry.yarnpkg.com/naive-ui/-/naive-ui-2.38.1.tgz#d64e2af0b161215a61b5b31038a538102da3e05f"
   integrity sha512-AnU1FQ7K/CbhguAX++V4kCFjk7h7RvWt4nvZPRjORMpq+fUIlzD+EcQ5Cv1VqDloNF8+eMv4Akc2Ogacc9S+5A==
