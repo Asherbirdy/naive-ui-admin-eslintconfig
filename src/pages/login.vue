@@ -8,53 +8,32 @@ import {
   NForm,
   NFormItem,
   NInput,
-  NButton
+  NButton,
+  NSpace
 } from 'naive-ui'
 import type {
   FormInst,
-  FormItemInst,
-  FormValidationError,
   FormRules
 } from 'naive-ui'
 
 interface ModelType {
-  age: string | null
+  username: string | null
   password: string | null
-  reenteredPassword: string | null
 }
 
 const formRef = ref<FormInst | null>(null)
-const rPasswordFormItemRef = ref<FormItemInst | null>(null)
-const modelRef = ref<ModelType>({
-  age: null,
-  password: null,
-  reenteredPassword: null
+const model = ref<ModelType>({
+  username: null,
+  password: null
 })
 
-const model = modelRef
-
-const handlePasswordInput = () => {
-  if (modelRef.value.reenteredPassword) {
-    rPasswordFormItemRef.value?.validate({ trigger: 'password-input' })
-  }
-}
-
 const handleValidateButtonClick = (e: MouseEvent) => {
-  e.preventDefault()
-  formRef.value?.validate(
-    (errors: Array<FormValidationError> | undefined) => {
-      if (!errors) {
-        alert('Valid')
-      } else {
-        console.log(errors)
-        alert('Invalid')
-      }
-    }
-  )
+  console.log(e)
+  alert('login')
 }
 
 const rules: FormRules = {
-  age: [
+  username: [
     {
       required: true,
       trigger: ['input', 'blur']
@@ -70,28 +49,29 @@ const rules: FormRules = {
 
 </script>
 <template>
-  <div>
-    <n-card class="w-100 m-a" title="Card">
+  <div class="h-[100dvh] flex justify-center items-center m-a" >
+    <n-card class="w-100 " title="Login">
       <n-form ref="formRef" :model="model" :rules="rules">
-        <n-form-item path="age" label="Age">
-          <n-input v-model:value="model.age" @keydown.enter.prevent />
+        <n-form-item path="username" label="Username">
+          <n-input v-model:value="model.username" @keydown.enter.prevent />
         </n-form-item>
         <n-form-item path="password" label="Password">
           <n-input
             v-model:value="model.password"
             type="password"
-            @input="handlePasswordInput"
             @keydown.enter.prevent
           />
         </n-form-item>
-        <n-button
-          :disabled="model.age === null"
-          round
-          type="primary"
-          @click="handleValidateButtonClick"
-        >
-          Login
-        </n-button>
+        <n-space justify="end">
+          <n-button
+            :disabled="model.username === null"
+            round
+            type="primary"
+            @click="handleValidateButtonClick"
+          >
+            login
+          </n-button>
+        </n-space>
       </n-form>
     </n-card>
   </div>
