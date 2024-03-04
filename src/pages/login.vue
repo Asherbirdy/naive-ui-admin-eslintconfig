@@ -5,7 +5,7 @@
 
 <script setup lang='ts'>
 import { NCard, NForm, NFormItem, NInput, NButton, NSpace } from 'naive-ui'
-import { useAuthApi } from '@/hooks/apis/'
+import { useAuthApi } from '@/hooks/apis'
 import { isAxiosError } from 'axios'
 import type { Login } from '@/types'
 import type { FormInst, FormRules } from 'naive-ui'
