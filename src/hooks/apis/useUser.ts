@@ -1,12 +1,11 @@
 import { useApiRequest } from '@/hooks/http'
-import type { LoginPayload, LoginResponse } from '@/types'
+import type { ShowCurrentUserResponse } from '@/types'
 
 export const useUserApi = {
   //
-  showCurrentUser: (): any => {
+  showCurrentUser: (): ShowCurrentUserResponse => {
     return useApiRequest.get({
-      url: '/users/showMe/',
-      withCredentials: true
+      url: '/users/showMe/'
     })
   }
 }

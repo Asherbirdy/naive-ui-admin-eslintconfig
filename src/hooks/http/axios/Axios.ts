@@ -1,7 +1,8 @@
-import type { AxiosOptions, RequstInterceptors, Respones } from './type'
-import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import axios from 'axios'
 import AbortAxios from './AbortAxios'
+import { getToken } from '@/utils'
+import type { AxiosOptions, RequstInterceptors, Respones } from './type'
+import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 
 // ** 創建一個 class, 後續可以通過 const useRequest = new Axios(...) 直接使用
 class Axios {
@@ -14,7 +15,6 @@ class Axios {
     this.interceptors = options.interceptors
     this.setInterceptors() // 對攔截器進行初始註冊
   }
-
 
   // 註冊攔截器方法
   setInterceptors() {
@@ -35,6 +35,11 @@ class Axios {
     this.axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
       // 是否清除重複請求
       const abortRepetitiveRequest = (config as unknown as any)?.abortRepetitiveRequest ?? this.options.abortRepetitiveRequest
+      const token = getToken('accessToken')
+
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+      }
 
       // 儲存請求標示
       if (abortRepetitiveRequest) {
