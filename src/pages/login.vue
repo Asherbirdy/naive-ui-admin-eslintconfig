@@ -7,6 +7,7 @@
 import { NCard, NForm, NFormItem, NInput, NButton, NSpace } from 'naive-ui'
 import { useAuthApi } from '@/hooks/apis'
 import { isAxiosError } from 'axios'
+import { setToken} from '@/utils'
 import type { Login } from '@/types'
 import type { FormInst, FormRules } from 'naive-ui'
 
@@ -15,16 +16,19 @@ const message = useMessage()
 
 const formRef = ref<FormInst | null>(null)
 const account = ref<Login>({
-  email: '',
-  password: ''
+  email: 'dev@gmail.com',
+  password: 'password'
 })
 
 const handleLogins = async () => {
   try {
-    await useAuthApi.login({
+    const response = await useAuthApi.login({
       email: account.value.email,
       password: account.value.password
     })
+    setToken('accessToken', response.data.token.accessTokenJWT)
+    setToken('refreshToken', response.data.token.refreshTokenJWT)
+
     router.push('/')
   }
   catch (error) {

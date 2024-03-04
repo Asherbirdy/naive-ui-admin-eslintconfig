@@ -1,4 +1,3 @@
-// const mode = import.meta.env.MODE
-const baseUrl = import.meta.env.VITE_SERVER
-
+const mode = import.meta.env.MODE
+const baseUrl = mode === 'development' ? '/api' : import.meta.env.VITE_SERVER
 export { baseUrl }

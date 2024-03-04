@@ -44,12 +44,18 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
+    },
+    server: {
+      cors: true,
+      open: true,
+      proxy: {
+        '/api': {
+          target: env.VITE_SERVER,
+          rewrite: (path) => path.replace(/^\/api/, ''),
+          changeOrigin: true
+        }
+      }
     }
-    // server: {
-    //   cors: true,
-    //   open: true,
-    //   proxy: {}
-    // }
   }
 
 })

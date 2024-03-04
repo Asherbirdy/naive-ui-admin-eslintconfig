@@ -5,7 +5,8 @@ export const useUserApi = {
   //
   showCurrentUser: (): any => {
     return useApiRequest.get({
-      url: '/users/showMe/'
+      url: '/users/showMe/',
+      withCredentials: true
     })
   }
 }
