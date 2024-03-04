@@ -16,7 +16,18 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       AutoImport({
-        imports: ['vue', 'vue-router'],
+        imports: [
+          'vue',
+          'vue-router',
+          {
+            'naive-ui': [
+              'useDialog',
+              'useMessage',
+              'useNotification',
+              'useLoadingBar'
+            ]
+          }
+        ],
         dts: 'src/auto-imports.ts'
       }),
       Components({
@@ -33,12 +44,12 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
-    },
-    server: {
-      cors: true,
-      open: true,
-      proxy: { }
     }
+    // server: {
+    //   cors: true,
+    //   open: true,
+    //   proxy: {}
+    // }
   }
 
 })

@@ -77,11 +77,13 @@ class Axios {
   // 統一請求方法
   request<T = any>(config: AxiosRequestConfig): Promise<T> {
     return new Promise((resolve, reject) => {
-      this.axiosInstance.request<any, AxiosResponse<Respones>>(config).then((res) => {
-        return resolve(res as unknown as Promise<T>)
-      }).catch((err) => {
-        return reject(err)
-      })
+      this.axiosInstance.request<any, AxiosResponse<Respones>>(config)
+        .then((res) => {
+          return resolve(res as unknown as Promise<T>)
+        })
+        .catch((err) => {
+          return reject(err)
+        })
     })
   }
 
