@@ -11,7 +11,7 @@ export function handleErrorStatus(status: number | undefined, message: string | 
       errorMessage = '[ Client Error: 403 ] 用戶已獲得授權，但訪問被禁止！'
       break
     case 404:
-      errorMessage = '[ Client Error: 404 ] 找不到網頁！'
+      errorMessage = '[ Client Error: 404 ] 找不到網頁 或 未知的請求！'
       break
     case 500:
       errorMessage = '[ Server Error: 500 ] 伺服器錯誤！'

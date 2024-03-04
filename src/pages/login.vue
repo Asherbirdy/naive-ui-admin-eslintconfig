@@ -11,6 +11,7 @@ import type { Login } from '@/types'
 import type { FormInst, FormRules } from 'naive-ui'
 
 const router = useRouter()
+const message = useMessage()
 
 const formRef = ref<FormInst | null>(null)
 const account = ref<Login>({
@@ -27,10 +28,12 @@ const handleLogins = async () => {
     router.push('/')
   }
   catch (error) {
-    if (isAxiosError(error) && error.response)
-      alert(error.response.data.msg)
+    if (isAxiosError(error) && error.response?.status === 401) {
+      message.error(error.response.data.msg)
       account.value.password = ''
       return
+    }
+    message.error('發生了錯誤。請再試一次!')
   }
 }
 
