@@ -5,22 +5,33 @@
 
 <script setup lang='ts'>
 import { NCard, NForm, NFormItem, NInput, NButton, NSpace } from 'naive-ui'
+import { useAuthApi } from '@/hooks/apis/'
+import { isAxiosError } from 'axios'
+import type { Login } from '@/types'
 import type { FormInst, FormRules } from 'naive-ui'
 
-interface AccountType {
-  username: string | null
-  password: string | null
-}
+const router = useRouter()
 
 const formRef = ref<FormInst | null>(null)
-const account = ref<AccountType>({
-  username: null,
-  password: null
+const account = ref<Login>({
+  email: '',
+  password: ''
 })
 
-const handleValidateButtonClick = (e: MouseEvent) => {
-  console.log(e)
-  alert('login')
+const handleLogins = async () => {
+  try {
+    await useAuthApi.login({
+      email: account.value.email,
+      password: account.value.password
+    })
+    router.push('/')
+  }
+  catch (error) {
+    if (isAxiosError(error) && error.response)
+      alert(error.response.data.msg)
+      account.value.password = ''
+      return
+  }
 }
 
 const rules: FormRules = {
@@ -42,9 +53,13 @@ const rules: FormRules = {
 <template>
   <div class="h-[100dvh] flex justify-center items-center m-a" >
     <n-card class="w-100 " title="Login">
-      <n-form ref="formRef" :model="account" :rules="rules">
+      <n-form
+        ref="formRef"
+        :model="account"
+        :rules="rules"
+      >
         <n-form-item path="username" label="Username">
-          <n-input v-model:value="account.username" @keydown.enter.prevent />
+          <n-input v-model:value="account.email" @keydown.enter.prevent />
         </n-form-item>
         <n-form-item path="password" label="Password">
           <n-input
@@ -55,10 +70,10 @@ const rules: FormRules = {
         </n-form-item>
         <n-space justify="end">
           <n-button
-            :disabled="account.username === null"
+            :disabled="account.email === ''"
             round
             type="primary"
-            @click="handleValidateButtonClick"
+            @click="handleLogins"
           >
             login
           </n-button>

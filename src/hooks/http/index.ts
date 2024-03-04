@@ -3,8 +3,8 @@ import { baseUrl } from './config'
 import _RequstInterceptors from './axios/requestInterceptors'
 
 // ** OptimusQA 搜尋用的
-const useApiRequest = new Axios({
-  directlyGetData: true, // 是否直接返回 data 數據
+export const useApiRequest = new Axios({
+  directlyGetData: false, // 是否直接返回 data 數據
   baseURL: baseUrl,
   timeout: 1000 * 60 * 5, // 超時
   interceptors: _RequstInterceptors, // 定義攔截器
@@ -15,6 +15,3 @@ const useApiRequest = new Axios({
   }
 })
 
-export {
-  useApiRequest
-}
