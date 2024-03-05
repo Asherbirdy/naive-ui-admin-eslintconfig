@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { setupLayouts } from 'virtual:generated-layouts'
 import generatedRoutes from 'virtual:generated-pages'
 import { useAuthApi } from '@/hooks/apis'
+import { removeToken } from '@/utils'
 
 const routes = setupLayouts(generatedRoutes)
 const router = createRouter({
@@ -16,6 +17,8 @@ const handlePagePermissions = async () => {
     return true
   }
   catch (error) {
+
+    removeToken('accessToken')
     return false
   }
 }

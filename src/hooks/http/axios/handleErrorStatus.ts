@@ -5,7 +5,7 @@ export function handleErrorStatus(status: number | undefined, message: string | 
       errorMessage = '[ Client Error: 400 ] 客戶端錯誤，請求格式或參數有誤！'
       break
     case 401:
-      errorMessage = '[ Client Error: 401 ] 身份認證未通過!'
+      errorMessage = '[ Client Error: 401 ] 身份認證未通過! 請重新登入！'
       break
     case 403:
       errorMessage = '[ Client Error: 403 ] 用戶已獲得授權，但訪問被禁止！'

@@ -9,6 +9,7 @@ class Axios {
   private axiosInstance: AxiosInstance
   private options: AxiosOptions
   private interceptors: RequstInterceptors | undefined
+
   constructor(options: AxiosOptions) {
     this.axiosInstance = axios.create(options)
     this.options = options
