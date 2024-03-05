@@ -1,4 +1,5 @@
 <route lang="yaml">
+  name: 'Login'
   meta:
     layout: login.vue
 </route>
