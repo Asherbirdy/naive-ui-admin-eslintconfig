@@ -12,7 +12,7 @@ import { RouterView } from 'vue-router'
     <n-layout has-sider>
       <LayoutSidebar />
       <!-- 使用插槽(props)手动渲染组件 -->
-      <router-view v-slot="{ Component }">
+      <router-view v-slot="{ Component }" class="w-full">
         <transition name="pagefade">
           <component :is="Component" />
         </transition>
