@@ -5,5 +5,5 @@
 </route>
 
 <template>
-  <div>Second Page</div>
+  <div class="bigText">big text scss</div>
 </template>
