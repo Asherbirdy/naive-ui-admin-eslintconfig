@@ -4,9 +4,6 @@ import { getToken } from '@/utils'
 import type { AxiosOptions, RequstInterceptors, Respones } from './type'
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 
-const isProxy = import.meta.env.VITE_ISPROXY
-console.log(isProxy)
-
 // ** 創建一個 class, 後續可以通過 const useRequest = new Axios(...) 直接使用
 class Axios {
   private axiosInstance: AxiosInstance
@@ -39,13 +36,13 @@ class Axios {
       // 是否清除重複請求
       const abortRepetitiveRequest = (config as unknown as any)?.abortRepetitiveRequest ?? this.options.abortRepetitiveRequest
 
+      // 檢查是否是代理模式
+      const isProxy = import.meta.env.VITE_ISPROXY
       if (!isProxy) {
         const token = getToken('accessToken')
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`
-        }
-
+        config.headers.Authorization = token ? `Bearer ${token}` : ''
       }
+
       // 儲存請求標示
       if (abortRepetitiveRequest) {
         abortAxios.addPending(config)
