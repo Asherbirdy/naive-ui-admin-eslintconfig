@@ -16,6 +16,9 @@ const handleCurrentUser = async () => {
 
 <template>
   <div>
+    <router-link to="./login">
+      <button>login</button>
+    </router-link>
     <button @click="handleCurrentUser">Current User</button>
     <p>{{ userId }}</p>
   </div>
