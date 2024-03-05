@@ -11,5 +11,10 @@ export interface LoginResponseData {
     role: string
     userId: string
   }
+  token: {
+    accessTokenJWT: string
+    refreshTokenJWT: string
+  }
+
 }
 export type LoginResponse = Promise<AxiosResponse<LoginResponseData>>

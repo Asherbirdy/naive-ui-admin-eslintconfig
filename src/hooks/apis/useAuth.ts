@@ -7,6 +7,7 @@ export const useAuthApi = {
     return useApiRequest.post({
       url: '/auth/login/',
       data: payload
+      // withCredentials: true
     })
   },
   // 驗證需要權限的頁面使用
