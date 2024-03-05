@@ -10,8 +10,14 @@ export const useAuthApi = {
       // withCredentials: true
     })
   },
+  // 登出
+  logout:() => {
+    return useApiRequest.delete({
+      url:'/auth/logout/'
+    })
+  },
   // 驗證需要權限的頁面使用
-  authPermission: (): LoginResponse => {
+  authPermission: () => {
     return useApiRequest.get({
       url: '/auth/'
     })

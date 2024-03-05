@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import { NLayout, NLayoutContent, NButton, NFlex, NH2 } from 'naive-ui'
+import { useAuthApi } from '@/hooks/apis'
 
-const handleLogout = () => {
-  console.log('logout')
+const router = useRouter()
+const handleLogout = async () => {
+  await useAuthApi.logout()
+  router.push('/login')
 }
+
 </script>
 <template>
   <div>
