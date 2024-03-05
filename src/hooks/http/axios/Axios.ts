@@ -37,11 +37,8 @@ class Axios {
       const abortRepetitiveRequest = (config as unknown as any)?.abortRepetitiveRequest ?? this.options.abortRepetitiveRequest
 
       // 檢查是否是代理模式
-      const isProxy = import.meta.env.VITE_ISPROXY
-      if (!isProxy) {
-        const token = getToken('accessToken')
-        config.headers.Authorization = token ? `Bearer ${token}` : ''
-      }
+      const token = getToken('accessToken')
+      config.headers.Authorization = `Bearer ${token}`
 
       // 儲存請求標示
       if (abortRepetitiveRequest) {
