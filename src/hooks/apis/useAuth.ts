@@ -11,7 +11,7 @@ export const useAuthApi = {
     })
   },
   // 驗證需要權限的頁面使用
-  authPerrmission: (): LoginResponse => {
+  authPermission: (): LoginResponse => {
     return useApiRequest.get({
       url: '/auth/'
     })

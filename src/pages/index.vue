@@ -1,3 +1,9 @@
+<route lang="yaml">
+  name: 'Index'
+  meta:
+    requiresAuth: true
+</route>
+
 <script setup lang='ts'>
 import { useUserApi } from '@/hooks/apis'
 
