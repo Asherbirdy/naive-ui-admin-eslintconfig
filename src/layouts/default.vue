@@ -6,13 +6,11 @@ import { RouterView } from 'vue-router'
 
 <template>
   <div>
-    <!-- Header -->
     <n-layout>
       <LayoutsHeader />
     </n-layout>
     <n-layout has-sider>
       <LayoutSidebar />
-      <!-- 使用插槽(props)手动渲染组件 -->
       <router-view
         v-slot="{ Component }"
         class="w-full"
