@@ -28,9 +28,7 @@ const menuOptions: MenuOption[] = [
 ]
 
 </script>
-
 <template>
-
   <n-layout-sider
     bordered
     collapse-mode="width"
@@ -46,5 +44,4 @@ const menuOptions: MenuOption[] = [
       :options="menuOptions"
     />
   </n-layout-sider>
-
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import themeOverides from '@/theme'
 import { NConfigProvider, NMessageProvider } from 'naive-ui'
+
+import themeOverides from '@/theme'
 
 </script>
 <template>

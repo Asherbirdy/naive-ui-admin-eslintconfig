@@ -13,6 +13,5 @@ import { NLayout,  NLayoutContent, NFlex, NH2 } from 'naive-ui'
         </n-flex>
       </n-layout-content>
     </n-layout>
-
   </div>
 </template>
