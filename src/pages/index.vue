@@ -3,11 +3,11 @@
 </route>
 
 <script setup lang='ts'>
-
+const aaa = ref('aaaa')
 </script>
 
 <template>
   <div>
-    hi
+    {{ aaa }}
   </div>
 </template>

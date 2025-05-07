@@ -8,6 +8,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-essential'
+
   ],
   overrides: [
     {
@@ -25,7 +26,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },
-  plugins: ['@typescript-eslint', 'vue', 'unused-imports', 'import'],
+  plugins: ['@typescript-eslint', 'vue', 'unused-imports', 'import', '@typescript-eslint'],
   rules: {
     quotes: ['error', 'single'],
     'no-trailing-spaces': 'error',
@@ -47,13 +48,13 @@ module.exports = {
         alignAttributesVertically: true
       }
     ],
-    '@typescript-eslint/type-annotation-spacing': [
-      'error',
-      {
-        before: false,
-        after: true
-      }
-    ],
+    // '@typescript-eslint/type-annotation-spacing': [
+    //   'error',
+    //   {
+    //     before: false,
+    //     after: true
+    //   }
+    // ],
     'vue/mustache-interpolation-spacing': ['error', 'always'],
     'arrow-spacing': ['error', { before: true, after: true }],
     'comma-spacing': ['error', { before: false, after: true }],
