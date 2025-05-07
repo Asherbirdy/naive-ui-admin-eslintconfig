@@ -48,13 +48,6 @@ module.exports = {
         alignAttributesVertically: true
       }
     ],
-    // '@typescript-eslint/type-annotation-spacing': [
-    //   'error',
-    //   {
-    //     before: false,
-    //     after: true
-    //   }
-    // ],
     'vue/mustache-interpolation-spacing': ['error', 'always'],
     'arrow-spacing': ['error', { before: true, after: true }],
     'comma-spacing': ['error', { before: false, after: true }],
