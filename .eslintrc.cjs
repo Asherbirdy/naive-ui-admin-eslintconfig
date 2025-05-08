@@ -8,7 +8,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-essential'
-
   ],
   overrides: [
     {
@@ -26,7 +25,7 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },
-  plugins: ['@typescript-eslint', 'vue', 'unused-imports', 'import', '@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'vue', 'unused-imports', 'import'],
   rules: {
     quotes: ['error', 'single'],
     'no-trailing-spaces': 'error',
@@ -112,6 +111,21 @@ module.exports = {
         ]
       }
     ],
+    'vue/component-tags-order': [
+      'error',
+      { 'order': ['script[setup]', 'template', 'style'] }
+    ],
+
+    'vue/script-indent': [
+      'error',
+      'tab',
+      {
+        baseIndent: 0,
+        switchCase: 1,
+        ignores: []
+      }
+    ],
+
     'vue/attributes-order': [
       'error',
       {
@@ -130,9 +144,12 @@ module.exports = {
         ]
       }
     ],
-    'vue/no-multi-spaces': ['error', {
-      'ignoreProperties': false
-    }],
+    'vue/no-multi-spaces': [
+      'error',
+      {
+        ignoreProperties: false
+      }
+    ],
     'vue/no-spaces-around-equal-signs-in-attribute': ['error'],
     'vue/this-in-template': 'error',
     'vue/no-reserved-component-names': 'error',
@@ -153,21 +170,33 @@ module.exports = {
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
       'warn',
-      { 'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_' }
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_'
+      }
     ],
-    // 新增規則
-    'space-in-parens': ['error', 'never'],  // 參數括號內不空格
-    'template-curly-spacing': ['error', 'never'],  // 字串模板內不空格
-    'array-bracket-spacing': ['error', 'never'],  // 陣列括號內不空格
-    'object-curly-spacing': ['error', 'always'],  // 物件括號內空格
-    'key-spacing': ['error', { beforeColon: false, afterColon: true }],  // 冒號前後空格
-    'object-curly-newline': ['error', { multiline: true, consistent: true }], // 新增規則
+    'space-in-parens': ['error', 'never'],
+    'template-curly-spacing': ['error', 'never'],
+    'array-bracket-spacing': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always'],
+    'key-spacing': ['error', { beforeColon: false, afterColon: true }],
+    'object-curly-newline': ['error', { multiline: true, consistent: true }],
     'import/order': [
       'error',
       {
         groups: ['builtin', 'external', 'internal'],
         'newlines-between': 'always',
-        'alphabetize': { order: 'asc', caseInsensitive: true }
+        alphabetize: { order: 'asc', caseInsensitive: true }
+      }
+    ],
+    'vue/html-closing-bracket-spacing': [
+      'error',
+      {
+        startTag: 'never',
+        endTag: 'never',
+        selfClosingTag: 'always'
       }
     ]
   }
