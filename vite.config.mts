@@ -49,15 +49,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     server: {
-      cors: true,
-      open: true,
-      proxy: {
-        '/api': {
-          target: env.VITE_SERVER,
-          rewrite: (path) => path.replace(/^\/api/, ''),
-          changeOrigin: true
-        }
-      }
+      port: Number(env.VITE_PORT) || 1207
     }
   }
 
